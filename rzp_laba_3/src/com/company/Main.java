@@ -22,7 +22,11 @@ public class Main {
         String a[]=srcString.split("_");
 
         for(int i=0; i < a.length;i++) {
-            sb.append(a[i]+"_");
+            if(i==a.length-1){
+            sb.append(a[i]);
+            }
+            else
+                sb.append(a[i]+"_");
         }
         equal();
         deleteWord();
