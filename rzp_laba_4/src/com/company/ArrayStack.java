@@ -2,35 +2,50 @@ package com.company;
 
 import java.util.Arrays;
 
-
-public class ArrayStack {
-
-    private int tail;
-    private int head;
-    private int[] Data;
-
+public class ArrayStack implements Main.Stack{
+     int tail;
+     int head;
+     int[] Data;
 
     public ArrayStack(int size) {
         Data = new int[size];
     }
 
-
     public void push(int element) {
 
-        int DataSize = this.size();
+        int DataSize = this.getSize();
         Data[DataSize] = element;
         tail++;
+    }
+
+    public int peek() {
+        return Data[tail-1];
     }
 
     public int pop() {
         int result = -1;
         if (tail != head) {
-            int DataSize = this.size() - 1;
+            int DataSize = this.getSize() - 1;
             result = Data[DataSize];
             Data[DataSize] = -1;
             tail--;
         }
         return result;
+    }
+
+
+    public int getSize() {
+        return tail;
+    }
+
+
+    public boolean isEmpty() {
+        return getSize() == 0;
+    }
+
+
+    public boolean isFull() {
+        return getSize() == Data.length;
     }
 
     public void clear() {
@@ -39,25 +54,5 @@ public class ArrayStack {
         tail = 0;
     }
 
-    public int size() {
-        return tail;
-    }
 
-    public boolean find(int element) {
-        for (int i = 0; i < Data.length; i++) {
-            if (Data[i] == element) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public int indexOf(int element) {
-        for (int i = 0; i < Data.length; i++) {
-            if (Data[i] == element) {
-                return i;
-            }
-        }
-        return 0;
-    }
 }
