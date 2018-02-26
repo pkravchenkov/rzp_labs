@@ -1,58 +1,59 @@
 package com.company;
-
-import java.util.Arrays;
-
-public class ArrayStack implements Main.Stack{
-     int tail;
-     int head;
-     int[] Data;
+public class ArrayStack {
+    int min;
+    int size;
+    int[] data;
+    int trueSize;
 
     public ArrayStack(int size) {
-        Data = new int[size];
+        data = new int[size];
+        trueSize=size;
     }
 
-    public void push(int element) {
+    public void push ( int val ) {
+        if ( size == 0 ) {
+            data[size] = val;
+            min = val;
+        } else if ( val < min) {
+            data[size] = 2 * val - min;
+            min = val;
 
-        int DataSize = this.getSize();
-        Data[DataSize] = element;
-        tail++;
-    }
-
-    public int peek() {
-        return Data[tail-1];
-    }
-
-    public int pop() {
-        int result = -1;
-        if (tail != head) {
-            int DataSize = this.getSize() - 1;
-            result = Data[DataSize];
-            Data[DataSize] = -1;
-            tail--;
+            assert (data[size] < min);
+        } else {
+            data[size] = val;
         }
-        return result;
+        ++size;
     }
 
+    public int peek(){
+        return data[size-1];
+    }
+     public int getSize(){
+        return size;
+     }
 
-    public int getSize() {
-        return tail;
+    public int getMin () {
+        return min;
     }
 
+    public int pop () {
+        --size;
 
-    public boolean isEmpty() {
-        return getSize() == 0;
+        int val = data[size];
+
+        if ( ( size > 0 ) && ( val < min ) ) {
+            int prevMin = min;
+            min += min - val;
+            return prevMin;
+        } else {
+            return val;
+        }
     }
 
-
-    public boolean isFull() {
-        return getSize() == Data.length;
+    public boolean isEmpty () {
+        return size == 0;
     }
-
-    public void clear() {
-        Arrays.fill(Data, 0);
-        head = 0;
-        tail = 0;
+    public boolean isFull () {
+        return size==trueSize;
     }
-
-
 }
