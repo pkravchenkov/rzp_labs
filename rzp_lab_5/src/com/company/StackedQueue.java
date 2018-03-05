@@ -23,37 +23,32 @@ public class StackedQueue implements Main.Queue {
 
 
     public int peek() throws InvalidOperationException {
-        try {
-            if (Stack2.isEmpty()) {
-                while (!Stack1.isEmpty()) {
-                    Stack2.push(Stack1.pop());
-                }
-            }
-            return Stack2.peek();
-        } catch (InvalidOperationException e){
-            throw new InvalidOperationException("Queue is empty");
 
+        if(this.isEmpty()){
+            throw new InvalidOperationException("Queue is empty");
         }
+
+        if (Stack2.isEmpty()) {
+            while (!Stack1.isEmpty()) {
+                Stack2.push(Stack1.pop());
+            }
+        }
+        return Stack2.peek();
     }
 
+
     public int dequeue() throws InvalidOperationException {
-        if(isEmpty()) {
+        if(this.isEmpty()) {
             throw new InvalidOperationException("Queue is empty");
         }
 
+        if(Stack2.isEmpty()) {
 
-        int x=0;
-        while(!Stack1.isEmpty()){
-            Stack2.push(Stack1.pop());
+            while (!Stack1.isEmpty()) {
+                Stack2.push(Stack1.pop());
+            }
         }
-        if(!Stack2.isEmpty()){
-            x=(int)Stack2.pop();
-        }
-        while(!Stack2.isEmpty()){
-            Stack1.push(Stack2.pop());
-        }
-
-        return x;
+        return Stack2.pop();
     }
 
 
@@ -68,7 +63,7 @@ public class StackedQueue implements Main.Queue {
     public boolean isFull() {
         return Stack1.isFull();
     }
-    public int min(){
+    public int min() throws InvalidOperationException {
         return Stack1.getMin();
     }
 }

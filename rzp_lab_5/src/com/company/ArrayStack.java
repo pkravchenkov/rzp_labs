@@ -11,7 +11,7 @@ public class ArrayStack implements Main.Stack{
     }
 
     public void push (int Value) throws InvalidOperationException{
-        try {
+        {
             if (size == 0) {
                 data[size] = Value;
                 Min = Value;
@@ -26,11 +26,10 @@ public class ArrayStack implements Main.Stack{
                 data[size] = Value;
             }
             ++size;
-        } catch(InvalidOperationException e){
-           System.out.println("Stack overload");
+        }
+
 
         }
-    }
 
     public int peek() throws InvalidOperationException
     {
@@ -40,16 +39,23 @@ public class ArrayStack implements Main.Stack{
         else
         return data[size-1];
     }
+
     public int getSize()
     {
         return size;
     }
 
-    public int getMin ()
-    {
+    public int getMin () throws InvalidOperationException {
+        if (!isEmpty()) {
+            for (int i = 0; i > data.length; i++) {
+                if (data[i] < Min) {
+                    Min = data[i];
+                }
+            }
+
+        }
         return Min;
     }
-
     public int pop () throws InvalidOperationException
     {
         if (isEmpty()){
@@ -58,21 +64,18 @@ public class ArrayStack implements Main.Stack{
         --size;
         int Value = data[size];
 
-        if ( ( size > 0 ) && ( Value < Min ) ) {
-            int prevMin = Min;
-            Min += Min - Value;
-            return prevMin;
+         if(Min==Value){
+            Min=data[size];
         }
-
-        else {
-            return Value;
+        getMin();
+        return Value;
         }
-    }
 
     public boolean isEmpty ()
     {
         return size == 0;
     }
+
     public boolean isFull()
     {
         return data.length==size;

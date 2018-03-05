@@ -6,7 +6,11 @@ public class Main {
 
         StackedQueue q=new StackedQueue();
         ArrayStack st=new ArrayStack(5);
-        st.pop();
+
+
+
+
+
 
 
     }
