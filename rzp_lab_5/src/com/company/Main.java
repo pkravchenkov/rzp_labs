@@ -7,16 +7,55 @@ public class Main {
         StackedQueue q=new StackedQueue();
         ArrayStack st=new ArrayStack(5);
 
+        // STACK TEST
+        try {                                               //Тест стека на peek
+            int a = st.peek();
+        }
+        catch(InvalidOperationException e){
+            System.out.println(e.getMessage());
 
-        q.enqueue(5);
-        q.enqueue(10);
-        q.enqueue(6);
-        System.out.println(q.dequeue());
-        System.out.println(q.min());
+        }
 
+        try {                                              // Тест стека на pop
+            int a = st.pop();
+        }
+        catch(InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
 
+        try {                                               //  Тест стека на push
+            for (int i = 0; i < 11; i++) {
+                st.push(i);
+            }
+        }
+        catch (InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
 
+        System.out.println("*******************\n*******************");
+       // ТЕСТ ОЧЕРЕДИ
+        try {                                               // Тест очереди на dequeue
+            int a = q.dequeue();
+        }
+        catch(InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
 
+        try {                                              // Тест очереди на peek
+            int a = q.peek();
+        }
+        catch(InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
+
+        try {                                               // Тест очереди на enqueue
+            for (int i = 0; i < 11; i++) {
+                q.enqueue(i);
+            }
+        }
+        catch (InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -28,7 +67,6 @@ public class Main {
         boolean isEmpty();
         boolean isFull();
     }
-
 
     public interface Stack {
         void push(int a) throws InvalidOperationException;

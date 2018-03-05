@@ -33,6 +33,7 @@ public class ArrayStack implements Main.Stack{
 
     public int peek() throws InvalidOperationException
     {
+
         if(isEmpty()){
           throw new InvalidOperationException("Stack is empty");
         }
