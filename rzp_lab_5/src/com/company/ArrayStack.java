@@ -50,10 +50,12 @@ public class ArrayStack implements Main.Stack{
             for (int i = 0; i > data.length; i++) {
                 if (data[i] < Min) {
                     Min = data[i];
+
                 }
             }
 
         }
+
         return Min;
     }
     public int pop () throws InvalidOperationException

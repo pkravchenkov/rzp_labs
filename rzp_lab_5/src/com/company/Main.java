@@ -8,6 +8,11 @@ public class Main {
         ArrayStack st=new ArrayStack(5);
 
 
+        q.enqueue(5);
+        q.enqueue(10);
+        q.enqueue(6);
+        System.out.println(q.dequeue());
+        System.out.println(q.min());
 
 
 
