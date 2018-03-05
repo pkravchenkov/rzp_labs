@@ -2,20 +2,21 @@ package com.company;
 
 public class Stack<E extends Comparable<E>> implements Main.Stack {
 
-    E Min;
     int size;
     E[] data;
-    private final int trueSize;
-    private E temp;
+    int trueSize;
     public Stack(int size)
     {
-        data = (E[]) new Comparable[size];
+
+        data = (E[]) new Comparable[size+1];
         trueSize=size;
+
     }
 
-
-
     public void push(Object Value) throws InvalidOperationException {
+    if(size==trueSize){
+        throw new InvalidOperationException("Stack overload");
+    }
     data[++size]= (E) Value;
     }
 

@@ -41,52 +41,43 @@ public class DoubleStack<E extends Comparable<E>> implements Main.Stack {
 
 
     public Object peek() throws InvalidOperationException {
-        if(getSize()==0){
-            throw new InvalidOperationException("Stack is empty");
-        }
-        else
+
         return Stack1.peek();
     }
 
-
+    @Override
     public Object pop() throws InvalidOperationException {
-        if (isEmpty()){
-            throw new InvalidOperationException("Stack is empty");
-        } else {
-            if (getSize() == 0) {
+            if(getSize()==0) {
                 Stack2.pop();
-            } else
+            }
+            else
 
-                Stack2.pop();
+            Stack2.pop();
             Stack2.push(Stack1.getMin());
-            return Stack1.pop();
-        }
+        return Stack1.pop();
     }
 
-
+    @Override
     public int getSize() {
         return Stack1.getSize();
     }
+    public int getSize2() {
+        return Stack2.getSize();
+    }
 
-
-
+    @Override
     public boolean isEmpty() {
         return Stack1.isEmpty();
     }
 
-
+    @Override
     public boolean isFull() throws InvalidOperationException {
         return Stack1.isFull();
     }
 
     public E getMin() throws InvalidOperationException {
-        if(getSize()==0){
-            throw new InvalidOperationException("Stack is empty");
-        }
-        else {
-            Stack2.pop();
-            Stack2.push(Stack1.getMin());
-            return (E) Stack2.peek();
-        }
+        Stack2.pop();
+        Stack2.push(Stack1.getMin());
+        return (E) Stack2.peek();
     }
 }
