@@ -41,14 +41,16 @@ public class DoubleStack<E extends Comparable<E>> implements Main.Stack {
 
 
     public Object peek() throws InvalidOperationException {
-
+        if(getSize()==0){
+            throw new InvalidOperationException("Stack is empty");
+        }
         return Stack1.peek();
     }
 
     @Override
     public Object pop() throws InvalidOperationException {
             if(getSize()==0) {
-                Stack2.pop();
+                throw new InvalidOperationException("Stack is empty");
             }
             else
 
@@ -76,6 +78,10 @@ public class DoubleStack<E extends Comparable<E>> implements Main.Stack {
     }
 
     public E getMin() throws InvalidOperationException {
+        if(getSize()==0){
+            throw new InvalidOperationException("No min, stack is empty");
+        }
+        else
         Stack2.pop();
         Stack2.push(Stack1.getMin());
         return (E) Stack2.peek();

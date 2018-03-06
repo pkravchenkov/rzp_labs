@@ -6,47 +6,38 @@ public class Main {
 
         DoubleStack d = new DoubleStack<>(10);
         try {
-            d.push("wwwww");
-            d.push("wwww");
-            d.push("www");
-            d.push("ww");
-            d.push("wwwwwwwww");
-            d.push("wwwwwwwww");
-            d.push("wwwww");
-            d.push("wwwww");
-            d.push("wwwwwwdddddw");
-            d.push("w");
-            d.push("wwwwwwwwwwwwwwwwwww");
-            d.push("wwwwwwwwwwwwwww");
-            d.push("wwwwwwwwwwwwwwwwwwwwwwww");
-            d.push("wwwwwwwwwwwwwwwwwwwwwwwww");
+            System.out.println("POP: " + d.pop());
+        } catch(InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println("PEEK: " + d.peek());
+        } catch(InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println("MIN OF DOUBLESTACK: "+d.getMin());
+        } catch(InvalidOperationException e){
+            System.out.println(e.getMessage());
+        }
+        try {
+            for(int i=0;i < 11;i++){
+                d.push(i);
+            }
         }catch(InvalidOperationException e){
             System.out.println(e.getMessage());
         }
-        System.out.println("PEEK: "+d.peek());
-        System.out.println("SIZE OF DOUBLESTACK: "+d.getSize());
-        System.out.println("SIZE2 OF DOUBLESTACK: "+d.getSize2());
-        System.out.println("MIN OF DOUBLESTACK: "+d.getMin());
 
-
-    /*
-        d.push(11);
-        d.push(446);
-        d.push(3);
-        d.push(42);
-        d.push(99);
-        d.push(1);
-        d.push(33);
-        d.push(32);
-        d.push(54);
-        d.push(54);
-
-
-        System.out.println("PEEK: "+d.peek());
-        System.out.println("SIZE OF DOUBLESTACK: "+d.getSize());
-        System.out.println("MIN OF DOUBLESTACK: "+d.getMin());
-*/
-
+        DoubleStack d2 = new DoubleStack<>(10);
+        d2.push("sda");
+        d2.push("da");
+        d2.push("sdsdaa");
+        d2.push("sda");
+        d2.push("sddda");
+        d2.push("sdasa");
+        d2.push("ssda");
+        d2.push("sddggggggggga");
+        System.out.println(d2.getMin());
     }
 
 
